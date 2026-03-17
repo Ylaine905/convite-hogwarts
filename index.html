@@ -607,7 +607,8 @@
   </style>
 </head>
 <body>
-  <audio id="bgMusic" src="musica.mp3" preload="auto" loop></audio>
+  <audio id="bgMusic" src="musica.mp3" preload="auto" loop playsinline></audio>
+  <audio id="endingMusic" src="malfeito.mp3" preload="auto" playsinline></audio>
   <div class="scene" id="scene">
     <div class="stars"></div>
 
@@ -757,6 +758,7 @@
     const yesBtn = document.getElementById('yesBtn');
     const sureBtn = document.getElementById('sureBtn');
     const music = document.getElementById('bgMusic');
+    const endingMusic = document.getElementById('endingMusic');
     const feather = document.getElementById('feather');
     const writerArea = document.getElementById('writerArea');
     const linesEls = [document.getElementById('line0'), document.getElementById('line1'), document.getElementById('line2')];
@@ -999,12 +1001,19 @@
       try {
         music.pause();
         music.currentTime = 0;
-        music.loop = false;
-        music.src = 'malfeito.mp3';
-        music.load();
-        music.volume = 0.35;
-        const playClosing = music.play();
-        if (playClosing && typeof playClosing.catch === 'function') playClosing.catch(() => {});
+        endingMusic.pause();
+        endingMusic.currentTime = 0;
+        endingMusic.volume = 0.35;
+        const playClosing = endingMusic.play();
+        if (playClosing && typeof playClosing.catch === 'function') playClosing.catch(() => {
+          const retryPlay = () => {
+            endingMusic.play().catch(() => {});
+            document.removeEventListener('touchend', retryPlay);
+            document.removeEventListener('click', retryPlay);
+          };
+          document.addEventListener('touchend', retryPlay, { once: true });
+          document.addEventListener('click', retryPlay, { once: true });
+        });
       } catch (e) {}
 
       const wandImg = wandCloseWrap.querySelector('.wand-close');
