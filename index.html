@@ -211,180 +211,6 @@
 
     .secret-note.fade-away{opacity:0;transition:opacity .7s ease;}
     .spell-clone{position:fixed;z-index:1200;pointer-events:none;filter:drop-shadow(0 10px 14px rgba(0,0,0,.25));transition:left .8s cubic-bezier(.2,.8,.2,1), top .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1), opacity .45s ease;}
-
-    .map-close-overlay{
-      position:fixed; inset:0; z-index:1500; display:none; align-items:center; justify-content:center;
-      background:
-        radial-gradient(circle at 50% 35%, rgba(121,78,42,.12), transparent 42%),
-        linear-gradient(180deg, #ead7b2 0%, #dcc293 100%);
-      overflow:hidden;
-      perspective:1800px;
-      transform-style:preserve-3d;
-    }
-    .map-close-overlay.visible{display:flex;}
-    .map-sheet{
-      position:relative;
-      width:min(92vw,900px);
-      aspect-ratio:1.05 / 1.48;
-      border-radius:14px;
-      transform-style:preserve-3d;
-      filter:drop-shadow(0 22px 42px rgba(54,30,12,.35));
-    }
-    .map-paper-base,
-    .map-panel{
-      background:
-        radial-gradient(circle at 18% 16%, rgba(255,248,233,.95), transparent 24%),
-        radial-gradient(circle at 78% 22%, rgba(129,82,38,.08), transparent 28%),
-        radial-gradient(circle at 48% 72%, rgba(103,63,29,.07), transparent 30%),
-        linear-gradient(180deg, #efdfbf 0%, #e2c89f 52%, #d9bd92 100%);
-      border:1.5px solid rgba(111,74,38,.58);
-      box-shadow:
-        inset 0 0 0 1px rgba(255,246,224,.4),
-        inset 0 0 32px rgba(109,71,39,.13);
-    }
-    .map-paper-base{
-      position:absolute; inset:0; overflow:hidden; border-radius:14px;
-    }
-    .map-paper-base::before,
-    .map-paper-base::after{
-      content:""; position:absolute; inset:4.5% 4.5%; border-radius:10px; pointer-events:none;
-      border:1px solid rgba(114,76,41,.25);
-    }
-    .map-paper-base::after{
-      inset:0;
-      background:
-        radial-gradient(circle, rgba(99,63,30,.20) 1.2px, transparent 1.5px) 8% 12%/72px 72px,
-        radial-gradient(circle, rgba(99,63,30,.16) 1.1px, transparent 1.5px) 68% 18%/92px 92px,
-        linear-gradient(90deg, transparent 48.8%, rgba(112,76,40,.13) 49.2%, rgba(112,76,40,.13) 50.8%, transparent 51.2%),
-        linear-gradient(transparent 32.8%, rgba(112,76,40,.12) 33.2%, rgba(112,76,40,.12) 34.2%, transparent 34.6%),
-        linear-gradient(transparent 65.2%, rgba(112,76,40,.12) 65.6%, rgba(112,76,40,.12) 66.6%, transparent 67%);
-      opacity:.75;
-      border:none;
-    }
-    .map-ink{
-      position:absolute; inset:0; pointer-events:none; opacity:.8;
-      background:
-        radial-gradient(circle at 22% 26%, rgba(98,62,30,.22) 0 2px, transparent 2.4px),
-        radial-gradient(circle at 71% 67%, rgba(98,62,30,.18) 0 2px, transparent 2.4px),
-        linear-gradient(115deg, transparent 13%, rgba(97,61,29,.16) 13.3%, rgba(97,61,29,.16) 13.7%, transparent 14%),
-        linear-gradient(66deg, transparent 21%, rgba(97,61,29,.14) 21.3%, rgba(97,61,29,.14) 21.7%, transparent 22%),
-        radial-gradient(ellipse at 28% 18%, rgba(255,247,232,.45), transparent 28%);
-    }
-    .map-route,
-    .map-route::before,
-    .map-route::after{
-      position:absolute; content:""; border-top:2px dashed rgba(87,52,26,.58); border-radius:50%;
-      transform:rotate(var(--r, 0deg));
-    }
-    .map-route{ left:12%; top:21%; width:28%; height:16%; }
-    .map-route::before{ left:145%; top:52%; width:32%; height:18%; --r:18deg; }
-    .map-route::after{ left:52%; top:175%; width:26%; height:15%; --r:-12deg; }
-    .map-route.second{ left:58%; top:24%; width:20%; height:12%; --r:-10deg; }
-    .map-route.second::before{ left:-118%; top:230%; width:34%; height:16%; --r:10deg; }
-    .map-route.second::after{ left:-36%; top:355%; width:30%; height:14%; --r:-16deg; }
-    .map-foot{
-      position:absolute; width:24px; height:40px; opacity:.38; transform:rotate(var(--rot,0deg));
-    }
-    .map-foot::before,.map-foot::after{
-      content:""; position:absolute; background:rgba(88,54,27,.72); border-radius:50%;
-    }
-    .map-foot::before{ left:7px; bottom:0; width:11px; height:20px; }
-    .map-foot::after{ left:2px; top:3px; width:5px; height:9px; box-shadow:8px 2px 0 rgba(88,54,27,.72), 11px 10px 0 rgba(88,54,27,.72), 2px 10px 0 rgba(88,54,27,.72); }
-    .map-title-mark{
-      position:absolute; left:50%; top:7%; transform:translateX(-50%);
-      font-family:"Cinzel Decorative","Papyrus",serif; font-size:clamp(16px,2.6vw,28px);
-      color:rgba(84,51,24,.72); letter-spacing:.12em; text-transform:uppercase; white-space:nowrap; opacity:.85;
-    }
-    .map-title-mark small{ display:block; font-size:.48em; letter-spacing:.18em; margin-top:4px; }
-    .map-panel{
-      position:absolute; top:0; bottom:0; width:50%; overflow:hidden; backface-visibility:hidden;
-      transition:transform 1.1s cubic-bezier(.22,.75,.18,1), box-shadow 1.1s ease, filter 1.1s ease;
-      transform-style:preserve-3d;
-    }
-    .map-panel::before{
-      content:""; position:absolute; inset:0; pointer-events:none;
-      background:
-        linear-gradient(90deg, rgba(73,45,20,.22), transparent 18%, transparent 82%, rgba(73,45,20,.22)),
-        linear-gradient(180deg, rgba(255,248,230,.18), transparent 20%, transparent 80%, rgba(88,55,25,.12));
-      mix-blend-mode:multiply;
-    }
-    .map-panel.left{ left:0; transform-origin:left center; border-radius:14px 0 0 14px; }
-    .map-panel.right{ right:0; transform-origin:right center; border-radius:0 14px 14px 0; }
-    .map-panel .panel-inner{ position:absolute; inset:0; }
-    .map-panel.left .panel-inner{
-      background:
-        linear-gradient(90deg, rgba(84,52,25,.12) 0, rgba(84,52,25,.04) 8%, transparent 20%),
-        linear-gradient(180deg, rgba(255,251,240,.18), transparent 18%, transparent 82%, rgba(92,61,32,.07));
-    }
-    .map-panel.right .panel-inner{
-      background:
-        linear-gradient(270deg, rgba(84,52,25,.12) 0, rgba(84,52,25,.04) 8%, transparent 20%),
-        linear-gradient(180deg, rgba(255,251,240,.18), transparent 18%, transparent 82%, rgba(92,61,32,.07));
-    }
-    .map-close-overlay.folding .map-panel.left{
-      transform:rotateY(-168deg) skewY(1.2deg);
-      box-shadow:18px 0 36px rgba(52,28,9,.24);
-      filter:brightness(.92);
-    }
-    .map-close-overlay.folding .map-panel.right{
-      transform:rotateY(168deg) skewY(-1.2deg);
-      box-shadow:-18px 0 36px rgba(52,28,9,.24);
-      filter:brightness(.92);
-    }
-    .map-mid-fold{
-      position:absolute; left:50%; top:0; width:2.6%; height:100%; transform:translateX(-50%);
-      background:linear-gradient(90deg, rgba(91,56,25,.20), rgba(255,247,230,.08), rgba(91,56,25,.20));
-      opacity:.65; z-index:6;
-    }
-    .map-band{
-      position:absolute; left:0; right:0; height:50%; overflow:hidden; backface-visibility:hidden;
-      transition:transform .95s cubic-bezier(.22,.76,.18,1), box-shadow .95s ease;
-      transform-style:preserve-3d;
-    }
-    .map-band.top{ top:0; transform-origin:center top; border-radius:14px 14px 0 0; }
-    .map-band.bottom{ bottom:0; transform-origin:center bottom; border-radius:0 0 14px 14px; }
-    .map-band::before{
-      content:""; position:absolute; inset:0; background:
-      linear-gradient(180deg, rgba(255,248,230,.20), transparent 22%, transparent 78%, rgba(89,56,27,.12));
-      pointer-events:none;
-    }
-    .map-close-overlay.folded-v .map-band.top{
-      transform:rotateX(-176deg);
-      box-shadow:0 18px 34px rgba(51,28,11,.22);
-    }
-    .map-close-overlay.folded-v .map-band.bottom{
-      transform:rotateX(176deg);
-      box-shadow:0 -18px 34px rgba(51,28,11,.22);
-    }
-    .map-stack{
-      position:absolute; inset:0; border-radius:14px;
-      background:
-        linear-gradient(180deg, rgba(255,251,241,.8), rgba(225,198,156,.96)),
-        linear-gradient(90deg, rgba(108,71,39,.2), transparent 18%, transparent 82%, rgba(108,71,39,.2));
-      border:1.5px solid rgba(111,74,38,.54);
-      box-shadow:
-        0 16px 34px rgba(42,22,8,.22),
-        inset 0 0 0 1px rgba(255,246,228,.45);
-      opacity:0;
-      transform:scale(1);
-      transition:opacity .45s ease, transform .8s ease;
-    }
-    .map-close-overlay.folded-v .map-stack{
-      opacity:1;
-      transform:scale(.985);
-    }
-    .map-close-overlay.compress{
-      animation:mapFadeOut .82s ease forwards;
-    }
-    .map-close-overlay.compress .map-sheet{
-      transition:transform .82s cubic-bezier(.3,.72,.2,1), opacity .82s ease;
-      transform:scale(.18) translateY(8vh);
-      opacity:0;
-    }
-    @keyframes mapFadeOut{
-      to{ opacity:0; }
-    }
-
     .spell-clone.cast-end{opacity:0;transform:rotate(-24deg) scale(.96);}
 
     .spark{position:fixed;border-radius:50%;pointer-events:none;z-index:999;background:radial-gradient(circle at 35% 35%, #fffbe7 0%, #ffe9a8 32%, #ffc85f 58%, rgba(255,200,95,0) 74%);box-shadow:0 0 16px rgba(255,218,130,.9), 0 0 28px rgba(255,182,86,.55);animation:burst .95s ease-out forwards;}
@@ -820,35 +646,6 @@
     </div>
   </div>
 
-
-  <div class="map-close-overlay" id="mapCloseOverlay" aria-hidden="true">
-    <div class="map-sheet">
-      <div class="map-paper-base">
-        <div class="map-ink"></div>
-        <div class="map-title-mark">Mischief Managed<small>Mapa do Maroto</small></div>
-        <div class="map-route"></div>
-        <div class="map-route second"></div>
-        <div class="map-foot" style="left:18%; top:18%; --rot:-18deg;"></div>
-        <div class="map-foot" style="left:23%; top:27%; --rot:14deg;"></div>
-        <div class="map-foot" style="left:61%; top:28%; --rot:-10deg;"></div>
-        <div class="map-foot" style="left:56%; top:37%; --rot:18deg;"></div>
-        <div class="map-foot" style="left:44%; top:59%; --rot:-14deg;"></div>
-        <div class="map-foot" style="left:49%; top:68%; --rot:12deg;"></div>
-      </div>
-      <div class="map-stack"></div>
-      <div class="map-band top">
-        <div class="map-panel left"><div class="panel-inner"></div></div>
-        <div class="map-panel right"><div class="panel-inner"></div></div>
-      </div>
-      <div class="map-band bottom">
-        <div class="map-panel left"><div class="panel-inner"></div></div>
-        <div class="map-panel right"><div class="panel-inner"></div></div>
-      </div>
-      <div class="map-mid-fold"></div>
-    </div>
-  </div>
-
-
   <script>
     const introStage = document.getElementById('introStage');
     const owlStage = document.getElementById('owlStage');
@@ -875,7 +672,6 @@
     const footprints = document.getElementById('footprints');
     const secretMessage = document.getElementById('secretMessage');
     const wandCloseWrap = document.getElementById('wandCloseWrap');
-    const mapCloseOverlay = document.getElementById('mapCloseOverlay');
 
     let started = false;
     let envelopeOpened = false;
@@ -883,7 +679,7 @@
     let writingStarted = false;
     let introCast = false;
     const letterLines = [
-      "Entre magias, religiões e outras vidas, sempre daremos um jeito de nos encontrar. Contra dementadores, lordes e contra o mundo.",
+      "Meu bem, entre mágicas, religiões e outras vidas, sempre daremos um jeito de nos encontrar. Contra dementadores, lordes e contra o mundo.",
       "Eu não tenho a sua criatividade, ou o seu talento, mas tenho todo amor do mundo pra te dar. Você aceita?",
     ];
 
@@ -937,6 +733,7 @@
     });
 
     let closingSpellStarted = false;
+    let closeSpellArmed = false;
     bindTap(wandCloseWrap, castClosingSpell);
 
     async function playSpellAtTitle() {
@@ -1070,11 +867,17 @@
 
 
     async function showSecretEnding() {
+      closeSpellArmed = false;
+      wandCloseWrap.style.pointerEvents = 'none';
       scene.classList.add('whiteout');
       secretStage.classList.add('visible');
       scene.style.display = 'none';
       secretMessage.classList.add('visible');
       createFootprints();
+      setTimeout(() => {
+        closeSpellArmed = true;
+        wandCloseWrap.style.pointerEvents = 'auto';
+      }, 1400);
     }
 
     function createFootprints() {
@@ -1093,7 +896,7 @@
     }
 
     async function castClosingSpell() {
-      if (closingSpellStarted) return;
+      if (!closeSpellArmed || closingSpellStarted) return;
       closingSpellStarted = true;
       wandCloseWrap.style.pointerEvents = 'none';
 
@@ -1140,20 +943,8 @@
       clone.classList.add('cast-end');
 
       setTimeout(() => clone.remove(), 520);
-      await wait(700);
-      await playMapClose();
+      await wait(2000);
       closePage();
-    }
-
-    async function playMapClose() {
-      mapCloseOverlay.classList.add('visible');
-      await wait(90);
-      mapCloseOverlay.classList.add('folding');
-      await wait(980);
-      mapCloseOverlay.classList.add('folded-v');
-      await wait(920);
-      mapCloseOverlay.classList.add('compress');
-      await wait(760);
     }
 
     function closePage() {
